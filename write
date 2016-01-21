@@ -1,0 +1,2 @@
+#!/bin/bash
+python /do/adafruitLCD/python/write.py 1.0 1.0 1.0 $1
