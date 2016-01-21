@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "\
+Add this line to enable I2C
+
+/boot/config.txt
+----------------
+dtparam=i2c1=on
+dtparam=i2c_arm=on
+
+/etc/modules
+------------
+i2c-dev
+"
