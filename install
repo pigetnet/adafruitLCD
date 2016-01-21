@@ -1,7 +1,11 @@
 #!/bin/bash
 /system/install python-smbus
 /system/install i2c-tools
-/system/install build-essential python-dev python-smbus python-pip git
+/system/install build-essential 
+/system/install python-dev 
+/system/install python-smbus 
+/system/install python-pip
+/system/install git
 pip install RPi.GPIO
 git clone https://github.com/adafruit/Adafruit_Python_CharLCD /do/adafruitLCD/python
 cd /do/adafruitLCD/python;python setup.py install
