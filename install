@@ -7,5 +7,5 @@
 /system/install python-pip
 /system/install git
 pip install RPi.GPIO
-git clone https://github.com/adafruit/Adafruit_Python_CharLCD /do/adafruitLCD/pythonLib
-cd /do/adafruitLCD/pythonLib;python setup.py install
+git clone -q https://github.com/adafruit/Adafruit_Python_CharLCD /do/adafruitLCD/pythonLib
+cd /do/adafruitLCD/pythonLib;python -q setup.py install
