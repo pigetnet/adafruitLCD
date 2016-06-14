@@ -1,3 +1,6 @@
 #!/bin/bash
 i2cdetect -y 1
+if [ $? -ne 0 ];then
+	/show/listecho "I2C is not enable" $ERR
+fi
 

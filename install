@@ -1,4 +1,8 @@
 #!/bin/bash
+
+/show/description "Adafruit LCD Shield module"
+/show/listecho "Check dependencies" $OK
+#Dependencies
 /system/install python-smbus
 /system/install i2c-tools
 /system/install build-essential
@@ -6,10 +10,29 @@
 /system/install python-smbus
 /system/install python-pip
 /system/install git
-pip install RPi.GPIO
+/system/install python-rpi.gpio
+
+/show/listecho "Download library" $OK
+#Reclone if exists
 if [ -d /do/adafruitLCD/pythonLib ];then
         rm -rf /do/adafruitLCD/pythonLib
 fi
 
-git clone -q https://github.com/adafruit/Adafruit_Python_CharLCD /do/adafruitLCD/pythonLib
-cd /do/adafruitLCD/pythonLib;python -q setup.py install
+#Clone Adafruit Library
+/system/gitcloner adafruit/Adafruit_Python_CharLCD /do/adafruitLCD/pythonLib
+
+if [ -d /do/adafruitLCD/pythonLib ];then
+	/show/listecho "Install library" $OK
+	#Compile Adafruit Library
+	cd /do/adafruitLCD/pythonLib;python setup.py install > /tmp/adafruit_lcd.log 2>&1
+
+	/show/listecho "Enable I2C" $OK
+	# Add I2C in /boot/config.txt
+	/string/add "/boot/config.txt" "dtparam=i2c1=on"
+	/string/add "/boot/config.txt" "dtparam=i2c_arm=on"
+
+	# Reboot notification
+	/show/listecho "You need to reboot to enable the LCD screen" $ERR
+else
+	/show/listecho "I can't download Adafruit LCD library" $ERR
+fi
