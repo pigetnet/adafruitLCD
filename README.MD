@@ -20,7 +20,7 @@ You can find more information on commands and schematics here :
 https://github.com/pigetnet/adafruitLCD/tree/master/doc
 
 # Additional License:
-
+Adafruit python library
 |Author                 |Tony DiCola for Adafruit INC          			      |
 |:---------------------:|:---------------------------------------------------:|
 |License                | MIT                                				  |
