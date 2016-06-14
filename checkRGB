@@ -1,1 +1,10 @@
-cd /do/adafruitLCD/pythonLib/examples;python char_lcd_plate.py
+#!/bin/bash
+if [ $# -ne 0 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+	/show/messagebox "$0"
+	/show/info "[alpha] [gpio] [i2c] [electronics] [example]"
+	/show/usageDescription "Start AdafruitLCD test"
+	/show/usage "$0"
+	exit 1
+else
+	cd /do/adafruitLCD/pythonLib/examples;python char_lcd_plate.py
+fi

@@ -1,2 +1,11 @@
 #!/bin/bash
-python /do/adafruitLCD/python/write.py 1.0 1.0 1.0 $1
+if [ $# -ne 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+	/show/messagebox "$0"
+	/show/info "[alpha] [gpio] [i2c] [electronics]"
+	/show/usageDescription "Write text on LCD screen"
+	/show/usage "$0 string"
+	/show/example "$0 \"hello world\""
+	exit 1
+else
+	python /do/adafruitLCD/python/write.py 1.0 1.0 1.0 $1
+fi

@@ -1,6 +1,13 @@
 #!/bin/bash
-i2cdetect -y 1
-if [ $? -ne 0 ];then
-	/show/listecho "I2C is not enable" $ERR
+if [ $# -ne 0 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+	/show/messagebox "$0"
+	/show/info "[alpha] [gpio] [i2c] [electronics] [i2cdetect]"
+	/show/usageDescription "Display I2C status"
+	/show/usage "$0"
+	exit 1
+else
+	i2cdetect -y 1
+	if [ $? -ne 0 ];then
+		/show/listecho "I2C is not enable" $ERR
+	fi
 fi
-
